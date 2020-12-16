@@ -21,7 +21,13 @@ if (mix.inProduction()) {
 
 mix.webpackConfig({
   plugins: [
-    // new BundleAnalyzerPlugin()
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      '_': 'lodash',
+      axios: 'axios',
+      Swal:'Swal',
+    })
   ],
   resolve: {
     extensions: ['.js', '.json', '.vue'],
@@ -54,5 +60,6 @@ function publishAseets () {
 const domain = process.env.APP_URL
 
 mix.browserSync({
-    proxy: domain
+    proxy: domain,
+    open: false
 });
