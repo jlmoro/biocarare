@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import store from '~/store'
 import Meta from 'vue-meta'
-import routes from './routes'
+//import routes from './routes'
 import Router from 'vue-router'
 import { sync } from 'vuex-router-sync'
 
@@ -15,6 +15,13 @@ const globalMiddleware = ['locale', 'check-auth']
 const routeMiddleware = resolveMiddleware(
   require.context('~/middleware', false, /.*\.js$/)
 )
+
+const requireContext = require.context('./routes', true, /.*\.js$/)
+
+const routes = requireContext.keys().map(file => requireContext(file)).reduce((routes, route) => {
+    routes = routes.concat(route.default)
+    return routes
+}, [])
 
 const router = createRouter()
 
