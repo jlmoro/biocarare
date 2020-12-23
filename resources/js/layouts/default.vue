@@ -1,10 +1,17 @@
 <template>
   <div class="main-layout">
-    <navbar />
-
-    <div class="container mt-4">
-      <child />
+    <div class="row">
+      <div class="col-md-12">
+        <menu-pos/>
+      </div>
+      <!-- <div class="col"> -->
+        <!-- <navbar /> -->
+        <div class="container mt-4 mr-0">
+          <child />
+        </div>
+      <!-- </div> -->
     </div>
+
   </div>
 </template>
 
@@ -15,7 +22,8 @@ export default {
   name: 'MainLayout',
 
   components: {
-    Navbar
+    Navbar,
+    MenuPos:()=>import('~/components/menuPos')
   }
 }
 </script>
