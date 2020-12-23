@@ -1,15 +1,15 @@
 <template>
   <div class="main-layout">
-    <div class="row">
-      <div class="col-md-12">
+    <div class="row w-100">
+      <div class="col-md-2">
         <menu-pos/>
       </div>
-      <!-- <div class="col"> -->
-        <!-- <navbar /> -->
+      <div class="col-md-10">
+        <navbar />
         <div class="container mt-4 mr-0">
           <child />
         </div>
-      <!-- </div> -->
+      </div>
     </div>
 
   </div>
