@@ -1,7 +1,7 @@
 <template>
   <section class="menu-principal">
-    
-    <div class="container-fluid">
+
+    <div v-show="user" class="container-fluid">
       <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
           <div class="sidebar-sticky pt-3">
@@ -83,24 +83,32 @@
   </section>
 </template>
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: "menuPos",
   data(){
     return{
 
     }
-  }
+  },
+
+  computed: mapGetters({
+    user: 'auth/user'
+  }),
+
 }
 </script>
 <style lang="scss" scoped>
 .menu-principal{
   .sidebar {
     position: fixed;
-    top: 0;
+    // top: 0;
+    top: 56px;
     bottom: 0;
     left: 0;
     z-index: 100; /* Behind the navbar */
-    padding: 48px 0 0; /* Height of navbar */
+    // padding: 48px 0 0; /* Height of navbar */
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
   }
 
