@@ -1,1 +1,1 @@
-Laravel-vue pos
+Laravel-vue biocarare
