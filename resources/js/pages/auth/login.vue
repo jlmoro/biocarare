@@ -8,14 +8,14 @@
           <img class="mb-1" src="/images/logo_1.png" alt="" width="150" height="150">
         </div>
         <div class="form-label-group">
-          <input  v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-          <label for="inputEmail">Email address</label>
+          <input  v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" type="email" id="inputEmail" class="form-control" placeholder="Correo Electrónico" required autofocus>
+          <label for="inputEmail">Correo Electrónico</label>
         </div>
         <has-error :form="form" field="email" />
 
         <div class="form-label-group">
-          <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-          <label for="inputPassword">Password</label>
+          <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+          <label for="inputPassword">Contraseña</label>
         </div>
         <has-error :form="form" field="password" />
 
