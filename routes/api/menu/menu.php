@@ -1,10 +1,9 @@
 <?php
+use App\Http\Controllers\MenuController;
+
 Route::group(['middleware' =>'auth:api'], function (){
-  Route::prefix('menu')->group( function(){
-    $controlador = "MenuController";
-    Route::get("listar-menu","$controlador@listar_menu");
-    // Route::post("crear-proveedor","$controlador@crear_proveedor");
-    // Route::put("editar-proveedor","$controlador@editar_proveedor");
-    // Route::delete("{id_proveedor}/eliminar-proveedor","$controlador@eliminar_proveedor");
+  Route::prefix('menu-principal')->group( function(){
+    // $controlador = [MenuController::class];
+    Route::get("listar-menu",[MenuController::class,'listar_menu']);
   });
 });

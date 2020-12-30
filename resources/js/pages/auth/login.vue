@@ -76,6 +76,7 @@ export default {
 
       // Fetch the user.
       await this.$store.dispatch('auth/fetchUser')
+      this.$store.dispatch('menu/listarMenu')
 
       // Redirect home.
       this.redirect()
