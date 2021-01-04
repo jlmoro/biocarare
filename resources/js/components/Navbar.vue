@@ -93,4 +93,9 @@ export default {
   height: 2rem;
   margin: -.375rem 0;
 }
+.navbar{
+  position: fixed;
+  width: -webkit-fill-available;
+  z-index: 10;
+}
 </style>
