@@ -28,6 +28,7 @@ mix.webpackConfig({
       '_': 'lodash',
       axios: 'axios',
       Swal:'Swal',
+      dataTable:'datatables.net'
     })
   ],
   resolve: {
