@@ -1,6 +1,6 @@
 <template>
   <section class="encabezado">
-    <p class="mt-5 titulo" :class="alinear">{{titulo}}</p>
+    <p class="mt-5 titulo letra-capital" :class="alinear">{{titulo}}</p>
   </section>
 </template>
 <script>
@@ -27,7 +27,7 @@ export default {
 .encabezado{
   .titulo{
     margin-bottom: 20px;
-    font-size: 24px;
+    font-size: 35px;
     font-weight: 300;
   }
 }

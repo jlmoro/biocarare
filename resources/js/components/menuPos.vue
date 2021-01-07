@@ -9,7 +9,7 @@
               <li v-for="(data,m) in dataMenu" :key="m"  class="nav-item">
                 <router-link class="nav-link" :to="{ name: data.ruta}">
                   <span data-feather="home"></span>
-                  {{data.nombre_item}} <span class="sr-only"></span>
+                  <span class="letra-capital">{{data.nombre_item}}</span> <span class="sr-only"></span>
                 </router-link>
               </li>
             </ul>
