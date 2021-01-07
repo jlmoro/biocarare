@@ -1,16 +1,21 @@
 <template>
-  <section class="pacientes-listar">
-    <h4 class="mt-5 text-center mb-4">pagina de pacientes</h4>
-    <div class="container">
+  <section class="pacientes-listar  w-75">
+    <encabezado-principal titulo="pacientes" alinear="text-center"/>
+
       <div class="row">
-        <div class="col-6">
-          <h4 class="border" @click.prevent="pagina_examen_local">examen local</h4>
+        <div class="col-md-6 col-sm-12 text-center cr-pointer pl-5">
+          <div @click.prevent="pagina_examen_local" class="card-padre-local mt-2">
+            <p class="letra-capital texto-paciente pt-4">examen local</p>
+          </div>
         </div>
-        <div class="col-6">
-          <h4 class="border" @click.prevent="pagina_examen_externo">examen externo</h4>
+
+        <div class="col-md-6 col-sm-12 text-center cr-pointer pl-5">
+          <div @click.prevent="pagina_examen_externo" class="card-padre-externo mt-2">
+            <p class="letra-capital texto-paciente pt-4">examen externo</p>
+          </div>
         </div>
       </div>
-    </div>
+
   </section>
 </template>
 <script>
@@ -36,4 +41,22 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.pacientes-listar{
+  .card-padre-local, .card-padre-externo{
+    border: none;
+    border-radius: 5px;
+    max-width: 263px;
+    color: white;
+    height: 97px;
+  }
+  .texto-paciente{
+    font-size: 31px;
+  }
+  .card-padre-local{
+    background-color: #8C8303;
+  }
+  .card-padre-externo{
+    background-color: #BF6F8C;
+  }
+}
 </style>
