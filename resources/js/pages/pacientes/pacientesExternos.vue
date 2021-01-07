@@ -1,6 +1,7 @@
 <template>
   <section class="externos-listar">
-    <encabezado-principal titulo="Listado pacientes externos" alinear="text-center"/>
+
+    <encabezado-principal titulo="pacientes externos" alinear="text-center"/>
 
     <div class="row w-100">
       <div class="col-md-12">

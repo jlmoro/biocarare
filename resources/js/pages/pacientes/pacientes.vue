@@ -48,6 +48,11 @@ export default {
     max-width: 263px;
     color: white;
     height: 97px;
+    transition-duration: .45s;
+    &:hover{
+      transition-duration: .4s;
+      box-shadow: 0.2px 0.3px 6.5px 0.5px rgb(107 106 106);
+    }
   }
   .texto-paciente{
     font-size: 31px;
