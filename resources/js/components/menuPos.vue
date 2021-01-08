@@ -1,56 +1,58 @@
 <template>
   <section class="menu-principal">
 
-    <div v-show="user" class="container-fluid">
-      <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-          <div class="sidebar-sticky pt-3">
-            <ul class="nav flex-column">
-              <li v-for="(data,m) in dataMenu" :key="m"  class="nav-item">
-                <router-link class="nav-link" :to="{ name: data.ruta}">
-                  <span data-feather="home"></span>
-                  <span class="letra-capital">{{data.nombre_item}}</span> <span class="sr-only"></span>
-                </router-link>
-              </li>
-            </ul>
+    <div v-if="user" class="hidden">
+      <vs-sidebar v-model="active" open square not-shadow>
+        <template #logo>
+          <img src="/images/logo_1.png" >
+        </template>
 
-              <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>Saved reports</span>
-                <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-                  <span data-feather="plus-circle"></span>
-                </a>
-              </h6>
-              <ul class="nav flex-column mb-2">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="file-text"></span>
-                    Current month
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="file-text"></span>
-                    Last quarter
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="file-text"></span>
-                    Social engagement
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="file-text"></span>
-                    Year-end sale
-                  </a>
-                </li>
-              </ul>
+        <vs-sidebar-group v-for="(data,m) in dataMenu" :key="m">
+          <template #header>
 
-          </div>
-        </nav>
-      </div>
+            <vs-sidebar-item :id="data.nombre_item" v-show="!data.subItems.length" :to="data.ruta">
+              <template #icon>
+                <fa :icon="data.icono"/>
+              </template>
+              <span class="letra-capital">{{data.nombre_item}}</span>
+            </vs-sidebar-item>
+
+            <vs-sidebar-item arrow v-show="data.subItems.length">
+              <template #icon>
+                <fa :icon="data.icono"/>
+              </template>
+              <span class="letra-capital">{{data.nombre_item}}</span>
+            </vs-sidebar-item>
+          </template>
+
+          <vs-sidebar-item :id="data2.nombre_item" v-show="data.subItems.length"
+            v-for="(data2,s) in data.subItems" :key="s" :to="data2.ruta">
+            <template #icon>
+              <fa :icon="data2.icono"/>
+            </template>
+            <span class="letra-capital">{{data2.nombre_item}}</span>
+          </vs-sidebar-item>
+
+        </vs-sidebar-group>
+
+        <template #footer>
+          <vs-row justify="space-between">
+            <vs-avatar>
+              <img :src="user.photo_url" alt="">
+            </vs-avatar>
+
+            <vs-avatar badge-color="danger" badge-position="top-right">
+              <i class='bx bx-bell' ></i>
+
+              <template #badge>
+                28
+              </template>
+            </vs-avatar>
+          </vs-row>
+        </template>
+      </vs-sidebar>
     </div>
+
   </section>
 </template>
 <script>
@@ -60,7 +62,7 @@ export default {
   name: "menuPos",
   data(){
     return{
-
+      active: 'home',
     }
   },
 
@@ -82,95 +84,15 @@ export default {
 </script>
 <style lang="scss" scoped>
 .menu-principal{
-  .sidebar {
+  .vs-sidebar-content .vs-sidebar__logo img {
+    max-width: 101px;
+    max-height: 110px;
+  }
+  .vs-sidebar-content{
     position: fixed;
-    // top: 0;
-    top: 56px;
-    bottom: 0;
-    left: 0;
-    z-index: 100; /* Behind the navbar */
-    // padding: 48px 0 0; /* Height of navbar */
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-  }
-
-  @media (max-width: 767.98px) {
-    .sidebar {
-      top: 5rem;
-    }
-  }
-
-  .sidebar-sticky {
-    position: relative;
-    top: 0;
-    height: calc(100vh - 48px);
-    padding-top: .5rem;
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-  }
-
-  @supports ((position: -webkit-sticky) or (position: sticky)) {
-    .sidebar-sticky {
-      position: -webkit-sticky;
-      position: sticky;
-    }
-  }
-
-  .sidebar .nav-link {
-    font-weight: 500;
-    color: #333;
-  }
-
-  .sidebar .nav-link .feather {
-    margin-right: 4px;
-    color: #999;
-  }
-
-  .sidebar .nav-link.active {
-    color: #007bff;
-  }
-
-  .sidebar .nav-link:hover .feather,
-  .sidebar .nav-link.active .feather {
-    color: inherit;
-  }
-
-  .sidebar-heading {
-    font-size: .75rem;
-    text-transform: uppercase;
-  }
-
-  /*
-  * Navbar
-  */
-
-  .navbar-brand {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    font-size: 1rem;
-    background-color: rgba(0, 0, 0, .25);
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
-  }
-
-  .navbar .navbar-toggler {
-    top: .25rem;
-    right: 1rem;
-  }
-
-  .navbar .form-control {
-    padding: .75rem 1rem;
-    border-width: 0;
-    border-radius: 0;
-  }
-
-  .form-control-dark {
-    color: #fff;
-    background-color: rgba(255, 255, 255, .1);
-    border-color: rgba(255, 255, 255, .1);
-  }
-
-  .form-control-dark:focus {
-    border-color: transparent;
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+    z-index: 9001;
+    width: 255px;
+    height: 100%;
   }
 
 }

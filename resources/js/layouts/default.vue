@@ -1,25 +1,24 @@
 <template>
   <div class="main-layout">
-    <menu-pos/>
-    <navbar />
 
-    <div class="container mt-4 pl-5" :class="ajustesClase">
-      <div class="row justify-content-center">
-        <child />
-      </div>
-    </div>
-
-    <!-- <div class="row w-100">
-      <div class="col-md-2"> </div>
-      <div class="col-md-12">
+    <b-row class="justify-content-md-center" >
+      <b-col cols="6" md="2">
+        <menu-pos/>
+      </b-col>
+      <b-col cols="6" md="9">
         <navbar />
-        <div class="container mt-4 mr-0">
-          <child />
-        </div>
-      </div>
-    </div> -->
+        <child />
+      </b-col>
+    </b-row>
 
+
+    <!-- <div class="container mt-4 pl-5" :class="ajustesClase">
+    <div class="row justify-content-center">
+    <child />
   </div>
+</div> -->
+
+</div>
 </template>
 
 <script>

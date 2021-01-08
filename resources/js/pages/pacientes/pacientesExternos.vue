@@ -6,32 +6,8 @@
     <div class="row w-100">
       <div class="col-md-12">
 
-        <table class="table table-striped" width="100">
-          <thead class="thead-dark">
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Edad</th>
-            <th colspan="3" class="text-center">Opciones</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Juan</td>
-              <td>Perez</td>
-              <td>56</td>
-              <td>
-                <button type="button" class="btn btn-outline-primary" name="button">eliminar</button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-outline-primary" name="button">editar</button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-outline-primary" name="button">Ver</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <b-table striped hover :items="items"></b-table>
+
       </div>
     </div>
   </section>
@@ -41,7 +17,12 @@ export default {
   name: "",
   data(){
     return{
-
+      items: [
+        { age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
+        { age: 21, first_name: 'Larsen', last_name: 'Shaw' },
+        { age: 89, first_name: 'Geneva', last_name: 'Wilson' },
+        { age: 38, first_name: 'Jami', last_name: 'Carney' }
+      ]
     }
   },
 

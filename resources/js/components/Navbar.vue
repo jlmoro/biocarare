@@ -1,61 +1,27 @@
 <template>
-  <nav v-if="user" class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container">
-      <router-link :to="{ name: user ? 'home' : 'welcome' }" class="navbar-brand">
-        {{ appName }}
-      </router-link>
+  <div v-if="user" class="center examplex">
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false">
-        <span class="navbar-toggler-icon" />
-      </button>
+    <vs-navbar left-collapsed >
 
-      <div id="navbarToggler" class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-          <locale-dropdown />
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li> -->
-        </ul>
+        <template #right>
+          <vs-navbar-group>
 
-        <ul class="navbar-nav ml-auto">
-          <!-- Authenticated -->
-          <li v-if="user" class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-dark"
-               href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            >
-              <img :src="user.photo_url" class="rounded-circle profile-photo mr-1">
-              {{ user.name }}
-            </a>
-            <div class="dropdown-menu">
-              <router-link :to="{ name: 'settings.profile' }" class="dropdown-item pl-3">
-                <fa icon="cog" fixed-width />
-                {{ $t('settings') }}
-              </router-link>
+            <img :src="user.photo_url" class="foto-nav" alt="" height="40" width="40">
+            <template #items>
+              <vs-navbar-item >
+                <fa icon="user-circle"/>
+                <span class="letra-capital">perfil</span>
+              </vs-navbar-item>
+              <vs-navbar-item @click.prevent="logout">
+                <fa icon="sign-out-alt"/>
+                <span class="letra-capital">salir</span>
+              </vs-navbar-item>
+            </template>
 
-              <div class="dropdown-divider" />
-              <a href="#" class="dropdown-item pl-3" @click.prevent="logout">
-                <fa icon="sign-out-alt" fixed-width />
-                {{ $t('logout') }}
-              </a>
-            </div>
-          </li>
-          <!-- Guest -->
-          <template v-else>
-            <li class="nav-item">
-              <router-link :to="{ name: 'login' }" class="nav-link" active-class="active">
-                {{ $t('login') }}
-              </router-link>
-            </li>
-            <li class="nav-item">
-              <router-link :to="{ name: 'register' }" class="nav-link" active-class="active">
-                {{ $t('register') }}
-              </router-link>
-            </li>
-          </template>
-        </ul>
-      </div>
-    </div>
-  </nav>
+          </vs-navbar-group>
+        </template>
+      </vs-navbar>
+  </div>
 </template>
 
 <script>
@@ -68,7 +34,8 @@ export default {
   },
 
   data: () => ({
-    appName: window.config.appName
+    appName: window.config.appName,
+
   }),
 
   computed: mapGetters({
@@ -88,6 +55,9 @@ export default {
 </script>
 
 <style scoped>
+.foto-nav{
+  border-radius: 5px;
+}
 .profile-photo {
   width: 2rem;
   height: 2rem;
