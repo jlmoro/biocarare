@@ -9,3 +9,16 @@ Vue.use(BootstrapVue)
 
 import Vuesax from 'vuesax'
 Vue.use(Vuesax)
+
+/*
+obtenido de https://dm4t2.github.io/vue-currency-input/
+*/
+import VueCurrencyInput from 'vue-currency-input'
+const pluginOptions = {
+  globalOptions: {
+    // currency: 'COP',
+    prefix: '$',
+
+  }
+}
+Vue.use(VueCurrencyInput, pluginOptions)
