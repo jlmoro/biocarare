@@ -4,6 +4,8 @@ import Child from './Child'
 import Button from './Button'
 import Checkbox from './Checkbox'
 import menuPos from './menuPos'
+import modalForm from './modales/modalForm'
+import modalEliminar from './modales/modalEliminar'
 import EncabezadoPrincipal from './EncabezadoPrincipal'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
@@ -18,6 +20,8 @@ import { HasError, AlertError, AlertSuccess } from 'vform'
   HasError,
   AlertError,
   AlertSuccess,
+  modalForm,
+  modalEliminar,
   menuPos,
   EncabezadoPrincipal
 ].forEach(Component => {

@@ -35,6 +35,7 @@ import {
   faBezierCurve,
   faGripVertical,
   faUserCircle,
+  faPlus
 
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -74,6 +75,7 @@ library.add(
   faBezierCurve,
   faGripVertical,
   faUserCircle,
+  faPlus
 )
 
 Vue.component('Fa', FontAwesomeIcon)

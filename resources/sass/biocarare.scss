@@ -40,3 +40,27 @@
 .letra-capital{
   text-transform: capitalize;
 }
+
+.btn-excel{
+  border: 1px solid darkgreen;
+  font-size: 35px;
+  padding: 1px 4px 1px 4px;
+  border-radius: 3px;
+  color: darkgreen;
+}
+
+.btn-pdf{
+  border: 1px solid darkred;
+  font-size: 35px;
+  padding: 1px 4px 1px 4px;
+  border-radius: 3px;
+  color: darkred;
+}
+
+.btn-crear{
+  border: none;
+  background-color: lightseagreen;
+  border-radius: 5px;
+  color: white;
+  padding: 5px 7px 5px 7px;
+}

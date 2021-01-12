@@ -1,8 +1,8 @@
 import page from '../page'
 export default [
   {
-    path: '/examenes',
-    name: 'examenes.listar',
+    path: '/examenes-precios',
+    name: 'examenes.precios.listar',
     component: page('examenes/examenesListar'),
   },
 ]
