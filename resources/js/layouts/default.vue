@@ -5,8 +5,8 @@
       <b-col cols="6" md="2">
         <menu-pos/>
       </b-col>
-      <b-col cols="6" md="9">
-        <navbar />
+      <navbar />
+      <b-col class="mt-3" cols="6" md="9">
         <child />
       </b-col>
     </b-row>
