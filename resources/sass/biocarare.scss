@@ -57,6 +57,21 @@
   color: darkred;
 }
 
+.btn-guardar{
+  border: none;
+  border-radius: 3px;
+  background-color: green;
+  color: white;
+  padding: 5px 7px 5px 7px;
+}
+
+.btn-cancelar{
+  border: 1px solid darkred;
+  border-radius: 5px;
+  color: darkred;
+  padding: 5px 7px 5px 7px;
+}
+
 .btn-crear{
   border: none;
   background-color: lightseagreen;
