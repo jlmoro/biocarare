@@ -2,7 +2,7 @@
   <section>
     <modal-form ref="modalCrear" size="md">
       <div slot="header" class="">
-        <span class="letra-capital">registrar examen</span>
+        <span class="letra-capital f-20">registrar examen</span>
       </div>
       <div slot="body" class="">
 
@@ -11,16 +11,22 @@
           <b-form-group class="mb-0" >
 
             <b-form-group label="Código:" label-for="codigo" label-cols-sm="4" label-align-sm="right" >
-              <b-form-input id="codigo"></b-form-input>
+              <b-form-input id="codigo" v-model="form.codigo"></b-form-input>
             </b-form-group>
 
             <b-form-group label="Nombre Exámen:" label-for="nombre-examen" label-cols-sm="4" label-align-sm="right" >
-              <b-form-input id="nombre-examen"></b-form-input>
+              <b-form-input id="nombre-examen" v-model="form.nombre_examen"></b-form-input>
             </b-form-group>
 
             <b-form-group label="Precio:" label-for="precio" label-cols-sm="4" label-align-sm="right" >
-              <b-form-input id="precio"></b-form-input>
-                <currency-input v-model="value" locale="de" />
+              <vue-numeric id="precio"
+                currency="$"
+                separator="."
+                v-model="form.precio"
+                class="p-2 input-precio"
+                :empty-value="0"
+                :minus="false">
+              </vue-numeric>
             </b-form-group>
 
           </b-form-group>
@@ -46,7 +52,8 @@ export default {
   name: "",
   data(){
     return{
-      value:100000
+      form:{},
+
     }
   },
   methods: {
@@ -57,4 +64,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.input-precio{
+  width: -webkit-fill-available;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+}
 </style>

@@ -22,3 +22,9 @@ const pluginOptions = {
   }
 }
 Vue.use(VueCurrencyInput, pluginOptions)
+
+/*
+obtenido de https://www.npmjs.com/package/vue-numeric
+*/
+import VueNumeric from 'vue-numeric'
+Vue.use(VueNumeric)
