@@ -6,13 +6,17 @@
       </div>
       <div slot="body" class="">
 
+        <ValidationObserver v-slot="{ handleSubmit }">
 
           <!-- <b-form-group label-cols-lg="3" class="mb-0" > -->
           <b-form-group class="mb-0" >
+            <ValidationProvider v-slot="{ errors }" name="codigo" rules="required">
+              <b-form-group label="Código:" label-for="codigo" label-cols-sm="4" label-align-sm="right" >
+                <b-form-input id="codigo" v-model="form.codigo"></b-form-input>
+              </b-form-group>
+              <span class="text-danger f-11"> {{errors[0]}} </span>
+            </ValidationProvider>
 
-            <b-form-group label="Código:" label-for="codigo" label-cols-sm="4" label-align-sm="right" >
-              <b-form-input id="codigo" v-model="form.codigo"></b-form-input>
-            </b-form-group>
 
             <b-form-group label="Nombre Exámen:" label-for="nombre-examen" label-cols-sm="4" label-align-sm="right" >
               <b-form-input id="nombre-examen" v-model="form.nombre_examen"></b-form-input>
@@ -30,6 +34,7 @@
             </b-form-group>
 
           </b-form-group>
+          </ValidationObserver>
 
 
       </div>

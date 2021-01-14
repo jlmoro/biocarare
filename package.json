@@ -25,6 +25,7 @@
     "js-cookie": "^2.2.1",
     "popper.js": "^1.16.1",
     "sweetalert2": "^10.9.0",
+    "vee-validate": "^3.4.5",
     "vform": "^1.0.1",
     "vue": "^2.6.12",
     "vue-currency-input": "^1.22.4",
