@@ -2,7 +2,7 @@
   <div class="row justify-content-center w-100">
     <!-- <div class="col-md-12"> -->
     <!-- <div class="col-lg-8 m-auto"> -->
-    <div class="col-md-4">
+    <div class="col-md-4" style="margin-right: 225px;">
       <form class="form-signin" @submit.prevent="login" @keydown="form.onKeydown($event)">
         <div class="text-center mb-4">
           <img class="mb-1" src="/images/logo_1.png" alt="" width="150" height="150">

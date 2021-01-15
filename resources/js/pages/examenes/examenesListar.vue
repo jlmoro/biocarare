@@ -68,7 +68,8 @@ export default {
   // },
   methods: {
     abrirModalRegistrar() {
-      this.notificacion('prueba','mensaje de prueba para ver mensajes','success')
+      console.log(this.$Helper);
+      this.$Helper.notificacion('prueba','mensaje de prueba para ver mensajes','success')
       // this.$refs.modalRegistrarExamenPrecio.toggle()
     }
   }
