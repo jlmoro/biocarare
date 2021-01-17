@@ -60,17 +60,18 @@ export default {
   },
   // computed:{
   //   contactos(){
-  //     return this.contactos_data.filter(a =>
-  //       a.contacto_nombre.toLowerCase().match(this.valor.toLowerCase()) ||
-  //       a.empresa_nombre.toLowerCase().match(this.valor.toLowerCase())
+  //     return this.data_examenes.filter(a =>
+  //       a.codigo.toLowerCase().match(this.valor.toLowerCase()) ||
+  //       a.exmamen_nombre.toLowerCase().match(this.valor.toLowerCase())
   //     );
   //   }
   // },
   methods: {
     abrirModalRegistrar() {
-      console.log(this.$Helper);
-      this.$Helper.notificacion('prueba','mensaje de prueba para ver mensajes','success')
-      // this.$refs.modalRegistrarExamenPrecio.toggle()
+
+      //mensaje para prueba
+
+      this.$refs.modalRegistrarExamenPrecio.toggle()
     }
   }
 }
