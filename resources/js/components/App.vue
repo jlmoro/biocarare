@@ -10,6 +10,7 @@
 
 <script>
 import Loading from './Loading'
+import {alerta,confirmar,notificacion} from '../utils'
 
 // Load layout components dynamically.
 const requireContext = require.context('~/layouts', false, /.*\.vue$/)
@@ -46,6 +47,7 @@ export default {
 
   mounted () {
     this.$loading = this.$refs.loading
+
   },
 
   methods: {
@@ -60,7 +62,17 @@ export default {
       }
 
       this.layout = layouts[layout]
-    }
+    },
+
+    notificacion(self,titulo=null,mensaje=null,color){
+      return notificacion(self,titulo,mensaje,color)
+    },
+
+    async confirmar(title='aa',message='bb'){
+      return confirmar(title,message)
+    },
+    alerta,
+
   }
 }
 </script>

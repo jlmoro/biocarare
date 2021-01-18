@@ -48,6 +48,7 @@
   </section>
 </template>
 <script>
+
 export default {
   components: {
     ModalCrear:()=>import('./components/modalCrear'),
@@ -68,9 +69,6 @@ export default {
   // },
   methods: {
     abrirModalRegistrar() {
-
-      //mensaje para prueba
-
       this.$refs.modalRegistrarExamenPrecio.toggle()
     }
   }

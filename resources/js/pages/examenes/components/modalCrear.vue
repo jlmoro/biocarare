@@ -62,6 +62,13 @@ export default {
     }
   },
   methods: {
+    async registrarExamen(){
+      try {
+        // petición
+      } catch (e) {
+        this.$root.notificacion(this,'Registro Creado','Se ha guardado correctamente','warn')
+      }
+    },
     toggle() {
       this.$refs.modalCrear.toggle()
     }
