@@ -55,6 +55,7 @@
 <script>
 export default {
   name: "",
+  props: ['ruta'],
   data(){
     return{
       form:{},
@@ -64,7 +65,7 @@ export default {
   methods: {
     async registrarExamen(){
       try {
-        // petición
+        // const {data} = await axios.post(``)
       } catch (e) {
         this.$root.notificacion(this,'Registro Creado','Se ha guardado correctamente','warn')
       }

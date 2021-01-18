@@ -1,8 +1,8 @@
 <template>
-  <section class="pacientes-listar  w-75">
+  <section class="pacientes-listar">
     <encabezado-principal titulo="pacientes" alinear="text-center"/>
 
-      <div class="row w-100">
+      <div class="row w-100 ml-5">
         <div class="col-md-6 col-sm-12 text-center cr-pointer pl-5">
           <div @click.prevent="pagina_examen_local" class="card-padre-local mt-2">
             <p class="letra-capital texto-paciente pt-4">examen local</p>

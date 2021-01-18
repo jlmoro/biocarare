@@ -44,7 +44,7 @@
       </b-col>
     </b-row>
 
-    <modal-crear ref="modalRegistrarExamenPrecio"/>
+    <modal-crear ref="modalRegistrarExamenPrecio" :ruta="ruta"/>
   </section>
 </template>
 <script>
@@ -56,7 +56,8 @@ export default {
   name: "",
   data(){
     return{
-
+      ruta:'/api/precio-examenes',
+      data_examenes:[]
     }
   },
   // computed:{
@@ -68,6 +69,17 @@ export default {
   //   }
   // },
   methods: {
+    async listar_examenes(){
+      try {
+        const {data} = await axios(`${this.ruta}/listar-precio-examenes-externos`)
+        if (data.error) {
+          this.$root.notificacion(this,'Atención',data.error,'danger')
+        }
+        this.data_examenes = data
+      } catch (e) {
+        this.$root.notificacion(this,'Atención','No fue posible mostrar la lista','warn')
+      }
+    },
     abrirModalRegistrar() {
       this.$refs.modalRegistrarExamenPrecio.toggle()
     }

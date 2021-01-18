@@ -33,6 +33,14 @@
 //   padding-top: 4px;
 // }
 
+.menu-principal .vs-sidebar-content{
+  z-index: 1000 !important;
+}
+
+.vs-navbar-content{
+  z-index: 100 !important;
+}
+
 .cr-pointer{
   cursor: pointer;
 }
