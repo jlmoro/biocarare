@@ -4,7 +4,7 @@
 
     <b-row>
       <b-col cols="6" md="5">
-        <b-form-input placeholder="Buscar"></b-form-input>
+        <b-form-input placeholder="Buscar" v-model="valor"></b-form-input>
       </b-col>
       <b-col cols="6" md="4">
         <fa icon="file-excel" class="btn-excel"/>
@@ -20,7 +20,7 @@
 
     <b-row class="mt-4">
       <b-col cols="12" md="12">
-        <table class="table table-stripe">
+        <table class="table table-stripe" id="lista-examenes">
           <thead>
             <th>#</th>
             <th> <span class="letra-capital">código</span> </th>
@@ -29,6 +29,7 @@
             <th></th>
           </thead>
           <tbody>
+            <!-- <tr v-for="(data,e) in examenes" :key="e"> -->
             <tr v-for="(data,e) in data_examenes" :key="e">
               <td>{{ e + 1}}</td>
               <td>{{data.codigo}}</td>
@@ -41,6 +42,20 @@
             </tr>
           </tbody>
         </table>
+
+        <b-row>
+          <b-col cols="12" md="12">
+            <b-pagination
+              v-model="currentPage"
+              :total-rows="rows"
+              :per-page="perPage"
+              aria-controls="lista-examenes"
+              pills
+              class="justify-content-center"
+            ></b-pagination>
+          </b-col>
+        </b-row>
+
       </b-col>
     </b-row>
 
@@ -57,17 +72,26 @@ export default {
   data(){
     return{
       ruta:'/api/precio-examenes',
-      data_examenes:[]
+      data_examenes:[],
+      valor:'',
+      perPage:10,
+      currentPage: 1,
     }
   },
-  // computed:{
-  //   contactos(){
-  //     return this.data_examenes.filter(a =>
-  //       a.codigo.toLowerCase().match(this.valor.toLowerCase()) ||
-  //       a.exmamen_nombre.toLowerCase().match(this.valor.toLowerCase())
-  //     );
-  //   }
-  // },
+  computed:{
+    // examenes(){
+    //   if (this.valor == '') {
+    //     return this.data_examenes
+    //   }
+    //   return this.data_examenes.filter(a =>
+    //     a.codigo.toLowerCase().match( this.valor.toLowerCase() ) ||
+    //     a.examen_nombre.toLowerCase().match( this.valor.toLowerCase() )
+    //   )
+    // },
+    rows() {
+      return this.data_examenes.length
+    }
+  },
   created(){
     this.listar_examenes()
   },
