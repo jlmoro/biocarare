@@ -29,11 +29,11 @@
             <th></th>
           </thead>
           <tbody>
-            <tr>
-              <td>0</td>
-              <td>99999</td>
-              <td>ñkljghñkljgs</td>
-              <td>2000000</td>
+            <tr v-for="(data,e) in data_examenes" :key="e">
+              <td>{{ e + 1}}</td>
+              <td>{{data.codigo}}</td>
+              <td>{{data.nombre_examen}}</td>
+              <td>{{data.precio}}</td>
               <td>
                 <fa icon="edit"/>
                 <fa icon="trash-alt"/>
@@ -44,7 +44,7 @@
       </b-col>
     </b-row>
 
-    <modal-crear ref="modalRegistrarExamenPrecio" :ruta="ruta"/>
+    <modal-crear ref="modalRegistrarExamenPrecio" :ruta="ruta" @registro:creado="listar_examenes"/>
   </section>
 </template>
 <script>
@@ -68,13 +68,14 @@ export default {
   //     );
   //   }
   // },
+  created(){
+    this.listar_examenes()
+  },
   methods: {
     async listar_examenes(){
       try {
         const {data} = await axios(`${this.ruta}/listar-precio-examenes-externos`)
-        if (data.error) {
-          this.$root.notificacion(this,'Atención',data.error,'danger')
-        }
+        // this.$root.validar(data);
         this.data_examenes = data
       } catch (e) {
         this.$root.notificacion(this,'Atención','No fue posible mostrar la lista','warn')

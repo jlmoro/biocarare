@@ -39,7 +39,7 @@
 
       </div>
       <div slot="footer" class="">
-        <button type="button" class="btn-guardar">
+        <button type="button" class="btn-guardar" @click="registrarExamen">
           <fa icon="check"/>
           <span class="letra-capital">registrar</span>
         </button>
@@ -65,9 +65,14 @@ export default {
   methods: {
     async registrarExamen(){
       try {
-        // const {data} = await axios.post(``)
+        const {data} = await axios.post(`${this.ruta}/registrar-precio-examen-externo`,this.form)
+        // this.$root.validar(data)
+        this.$root.notificacion(this,'Registro Creado',data.mensaje,'success')
+        this.$emit('registro:creado')
+        this.form = {}
+        this.toggle()
       } catch (e) {
-        this.$root.notificacion(this,'Registro Creado','Se ha guardado correctamente','warn')
+        this.$root.notificacion(this,'Atennción','No es posible registrar','warn')
       }
     },
     toggle() {

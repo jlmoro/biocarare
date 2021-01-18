@@ -7,21 +7,21 @@ const alerta = (title='',message='',icon='info') => {
 }
 
 const confirmar = (elTitle = '', elText = '')=>{
-    return Swal.fire({
-        title: elTitle ? elTitle : '¿Está seguro?',
-        text: elText ? elText : 'No sera posible deshacer esta acción',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Confirmar'
-    })
+  return Swal.fire({
+    title: elTitle ? elTitle : '¿Está seguro?',
+    text: elText ? elText : 'No sera posible deshacer esta acción',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    cancelButtonText: 'Cancelar',
+    confirmButtonText: 'Confirmar'
+  })
 }
 
 
 const notificacion = (self,titulo = null, mensaje = null, color)=> {
-    self.$vs.notification({
+  self.$vs.notification({
     position: 'top-right',
     flat: true,
     color: color ? color: 'primary',
@@ -32,8 +32,23 @@ const notificacion = (self,titulo = null, mensaje = null, color)=> {
 }
 
 
+const validar = (self, a=null)=> {
+  if (a.error) {
+    self.$vs.notification({
+      position: 'top-right',
+      sticky: true,
+      color: 'danger',
+      duration:4000,
+      title: 'Advertencia',
+      text: a.error
+    })
+    throw a
+  }
+}
+
 export {
   alerta,
   confirmar,
-  notificacion
+  notificacion,
+  validar
 }

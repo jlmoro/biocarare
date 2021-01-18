@@ -11,6 +11,6 @@ class PrecioExamenesExternos extends Model
 
     protected $table="precios_examen_externo";
     protected $primary_key="id";
-    protected $guarded = [];
+    protected $guarded = ['estado'];
 
 }

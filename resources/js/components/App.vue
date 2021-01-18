@@ -10,7 +10,7 @@
 
 <script>
 import Loading from './Loading'
-import {alerta,confirmar,notificacion} from '../utils'
+import {alerta,confirmar,notificacion,validar} from '../utils'
 
 // Load layout components dynamically.
 const requireContext = require.context('~/layouts', false, /.*\.vue$/)
@@ -62,6 +62,10 @@ export default {
       }
 
       this.layout = layouts[layout]
+    },
+
+    validar(self,a=null){
+      return validar(self,a)
     },
 
     notificacion(self,titulo=null,mensaje=null,color){
