@@ -23,6 +23,41 @@
   font-size: 40px
 }
 
+.boton-editar{
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  padding: 2px 1px 3px 4px;
+  font-size: 23px;
+  color: grey;
+  transition-duration: .4;
+  &:hover{
+    cursor: pointer;
+    background-color: gray;
+    color: white;
+    transition-duration: .85;
+  }
+}
+
+.vs-switch{
+  height: 24px !important;
+  width: 48px !important;
+}
+
+.boton-eliminar{
+  border: 1px solid darkred;
+  padding: 1px 2px 1px 2px;
+  font-size: 21px;
+  border-radius: 3px;
+  color: darkred;
+  transition-duration: .4;
+  &:hover{
+    cursor: pointer;
+    background-color: darkred;
+    color: white;
+    transition-duration: .85;
+  }
+}
+
 // .txt-area{
 //   border-radius: 5px;
 //   resize: none;

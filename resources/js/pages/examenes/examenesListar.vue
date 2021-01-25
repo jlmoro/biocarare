@@ -26,6 +26,7 @@
             <th> <span class="letra-capital">código</span> </th>
             <th> <span class="letra-capital">nombre exámen</span> </th>
             <th> <span class="letra-capital">precio</span> </th>
+            <th> <span class="letra-capital">estado</span> </th>
             <th></th>
           </thead>
           <tbody>
@@ -36,8 +37,18 @@
               <td>{{data.nombre_examen}}</td>
               <td>{{data.precio}}</td>
               <td>
-                <fa icon="edit"/>
-                <fa icon="trash-alt"/>
+                <vs-switch v-model="data.estado_examen">
+                  <template #off danger>
+                    <fa icon="times"/>
+                  </template>
+                  <template #on success>
+                    <fa icon="check"/>
+                  </template>
+                </vs-switch>
+              </td>
+              <td>
+                <fa icon="edit" class="boton-editar"/>
+                <fa icon="trash-alt" class="boton-eliminar"/>
               </td>
             </tr>
           </tbody>
@@ -101,6 +112,15 @@ export default {
         const {data} = await axios(`${this.ruta}/listar-precio-examenes-externos`)
         // this.$root.validar(data);
         this.data_examenes = data
+        this.data_examenes.forEach((item, i) => {
+          if (item.estado == 0) {
+            item.estado_examen = false
+          } else {
+            item.estado_examen = true
+          }
+        });
+        console.log(this.data_examenes);
+
       } catch (e) {
         this.$root.notificacion(this,'Atención','No fue posible mostrar la lista','warn')
       }
