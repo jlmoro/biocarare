@@ -119,8 +119,6 @@ export default {
             item.estado_examen = true
           }
         });
-        console.log(this.data_examenes);
-
       } catch (e) {
         this.$root.notificacion(this,'Atención','No fue posible mostrar la lista','warn')
       }

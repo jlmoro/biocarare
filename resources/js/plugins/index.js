@@ -33,6 +33,13 @@ Vue.use(VueNumeric)
 vee-validate obtenido de https://vee-validate.logaretm.com/v3/overview.html#usage
 */
 import { ValidationObserver,ValidationProvider, extend } from 'vee-validate';
+import * as rules from 'vee-validate/dist/rules'
 import es from 'vee-validate/dist/locale/es'
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver)
+for (let rule in rules){
+  extend(rule, {
+    ...rules[rule], // add the rule
+    message: es.messages[rule] // add its message
+  })
+}
