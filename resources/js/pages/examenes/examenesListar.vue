@@ -37,7 +37,7 @@
               <td>{{data.nombre_examen}}</td>
               <td>{{data.precio}}</td>
               <td>
-                <vs-switch v-model="data.estado_examen">
+                <vs-switch v-model="data.estado_examen" @change="cambiar_estado(data.id)">
                   <template #off danger>
                     <fa icon="times"/>
                   </template>
@@ -107,6 +107,20 @@ export default {
     this.listar_examenes()
   },
   methods: {
+    async cambiar_estado(dato){
+      try {
+        const {data} = await axios.put(`${this.ruta}/${dato}/cambiar-estado`)
+        if (data.error) {
+          this.$root.notificacion(this,'Atención','Error al actualizar estado','danger')
+          return
+        }
+        this.$root.notificacion(this,'Estado Actualizado',data.mensaje,'success')
+        this.listar_examenes()
+      } catch (e) {
+        this.$root.notificacion(this,'Atención','No fue posible cambiar el estado','warn')
+      }
+      console.log(dato,"cambiando estado");
+    },
     async listar_examenes(){
       try {
         const {data} = await axios(`${this.ruta}/listar-precio-examenes-externos`)

@@ -42,6 +42,20 @@ class PrecioExamenesExternosController extends Controller
     } catch (\Exception $e) {
       return $this->captura_error($e,"error al registrar examen");
     }
+  }
+  public function cambiar_estado($id_examen)
+  {
+    try {
+      return DB::transaction(function() use($id_examen){
+
+        $estado = PrecioExamenesExternos::find($id_examen);
+
+        dd($estado->estado);
+
+      },5);
+    } catch (\Exception $e) {
+      return $this->captura_error($e,"error al actualizar estado");
+    }
 
   }
 }
