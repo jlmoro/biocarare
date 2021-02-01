@@ -37,18 +37,19 @@
               <td>{{data.nombre_examen}}</td>
               <td>{{data.precio}}</td>
               <td>
-                <vs-switch v-model="data.estado_examen" @change="cambiar_estado(data.id)">
+                <b-form-checkbox switch size="lg" v-model="data.estado_examen" @change="cambiar_estado(data.id)"/>
+                <!-- <vs-switch v-model="data.estado_examen" @change="cambiar_estado(data.id)">
                   <template #off danger>
                     <fa icon="times"/>
                   </template>
                   <template #on success>
                     <fa icon="check"/>
                   </template>
-                </vs-switch>
+                </vs-switch> -->
               </td>
               <td>
-                <fa icon="edit" class="boton-editar"/>
-                <fa icon="trash-alt" class="boton-eliminar"/>
+                <fa icon="edit" class="boton-editar" @click="abrirModalEditar(data)"/>
+                <fa icon="trash-alt" class="boton-eliminar" @click="modal_eliminar(data)"/>
               </td>
             </tr>
           </tbody>
@@ -70,7 +71,15 @@
       </b-col>
     </b-row>
 
+    <modal-eliminar ref="modalEliminar"
+    titulo="Eliminar Dato"
+    :mensaje="`¿Seguro que desea eliminar ${examen.nombre_examen}?`"
+    @eliminar="eliminando"
+    />
+
     <modal-crear ref="modalRegistrarExamenPrecio" :ruta="ruta" @registro:creado="listar_examenes"/>
+    <modal-editar ref="modalEditarExamenPrecio" :ruta="ruta" @registro:actualizado="listar_examenes"/>
+
   </section>
 </template>
 <script>
@@ -78,6 +87,7 @@
 export default {
   components: {
     ModalCrear:()=>import('./components/modalCrear'),
+    ModalEditar:()=>import('./components/modalEditar'),
   },
   name: "",
   data(){
@@ -87,6 +97,7 @@ export default {
       valor:'',
       perPage:10,
       currentPage: 1,
+      examen:{}
     }
   },
   computed:{
@@ -107,6 +118,25 @@ export default {
     this.listar_examenes()
   },
   methods: {
+    async eliminando(){
+      try {
+        const {data} = await axios.delete(`${this.ruta}/${this.examen.id}/eliminar-examen`)
+        if (data.error) {
+          this.$root.notificacion(this,'Atención',data.error,'danger')
+          return
+        }
+        this.$refs.modalEliminar.toggle()
+        this.listar_examenes()
+        this.$root.notificacion(this,'Dato Eliminado',data.mensaje,'success')
+      } catch (e) {
+        this.$root.notificacion(this,'Atención','No fue posible eliminar el dato','warn')
+      }
+
+    },
+    modal_eliminar(dato){
+      this.$refs.modalEliminar.toggle()
+      this.examen = dato
+    },
     async cambiar_estado(dato){
       try {
         const {data} = await axios.put(`${this.ruta}/${dato}/cambiar-estado`)
@@ -119,7 +149,6 @@ export default {
       } catch (e) {
         this.$root.notificacion(this,'Atención','No fue posible cambiar el estado','warn')
       }
-      console.log(dato,"cambiando estado");
     },
     async listar_examenes(){
       try {
@@ -136,6 +165,9 @@ export default {
       } catch (e) {
         this.$root.notificacion(this,'Atención','No fue posible mostrar la lista','warn')
       }
+    },
+    abrirModalEditar(dato){
+      this.$refs.modalEditarExamenPrecio.toggle(dato)
     },
     abrirModalRegistrar() {
       this.$refs.modalRegistrarExamenPrecio.toggle()

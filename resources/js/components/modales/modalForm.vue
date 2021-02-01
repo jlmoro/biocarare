@@ -55,7 +55,7 @@ export default {
      if (this.scroll === true) {
        return "modal-dialog-scrollable";
      }
-   },
+    },
   },
   data(){
     return {
