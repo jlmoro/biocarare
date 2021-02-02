@@ -43,3 +43,10 @@ for (let rule in rules){
     message: es.messages[rule] // add its message
   })
 }
+
+/*
+vue croppa obtenido de https://zhanziyang.github.io/vue-croppa/#/quick-start
+*/
+import Croppa from 'vue-croppa'
+import 'vue-croppa/dist/vue-croppa.css'
+Vue.use(Croppa)

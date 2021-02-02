@@ -82,6 +82,7 @@ export default {
         this.$root.notificacion(this,'Registro Creado',data.mensaje,'success')
         this.$emit('registro:creado')
         this.form = {}
+        this.$refs.Registrar.reset()
         this.toggle()
 
       } catch (e) {
