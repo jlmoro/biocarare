@@ -10,7 +10,7 @@
 
           <!-- <b-form-group label-cols-lg="3" class="mb-0" > -->
           <b-form-group class="mb-0" >
-            <ValidationProvider v-slot="{ errors }" name="código" rules="required|numeric">
+            <ValidationProvider v-slot="{ errors }" name="código" rules="required|numeric|max:12">
               <b-form-group label="Código:" label-for="codigo" label-cols-sm="4" label-align-sm="right" >
                 <b-form-input id="codigo" v-model="form.codigo"></b-form-input>
                 <!-- <b-form-input id="codigo" type="number" v-model="form.codigo"></b-form-input> -->
@@ -26,7 +26,7 @@
             </b-form-group>
 
             <b-form-group label="Precio:" label-for="precio" label-cols-sm="4" label-align-sm="right" >
-              <ValidationProvider v-slot="{ errors }" name="precio" rules="required">
+              <ValidationProvider v-slot="{ errors }" name="precio" rules="required|max:7">
               <vue-numeric id="precio"
               currency="$"
               separator="."

@@ -53,7 +53,9 @@ export default {
   props: ['ruta'],
   data(){
     return{
-      form:{},
+      form:{
+        foto:{}
+      },
       myCroppa: {},
 
     }

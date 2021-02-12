@@ -20,8 +20,8 @@
 
     <b-row class="mt-4">
       <b-col cols="12" md="12">
-        <table class="table table-stripe" id="lista-examenes">
-          <thead>
+        <table class="table table-hover table-borderless" id="lista-examenes">
+          <thead class="bg-success text-white">
             <th>#</th>
             <th> <span class="letra-capital">código</span> </th>
             <th> <span class="letra-capital">nombre exámen</span> </th>
@@ -32,20 +32,12 @@
           <tbody>
             <!-- <tr v-for="(data,e) in examenes" :key="e"> -->
             <tr v-for="(data,e) in data_examenes" :key="e">
-              <td>{{ e + 1}}</td>
+              <td><span class="fw-700">{{ e + 1}}</span></td>
               <td>{{data.codigo}}</td>
               <td>{{data.nombre_examen}}</td>
-              <td>{{data.precio}}</td>
+              <td>{{data.precio | currency}}</td>
               <td>
                 <b-form-checkbox switch size="lg" v-model="data.estado_examen" @change="cambiar_estado(data.id)"/>
-                <!-- <vs-switch v-model="data.estado_examen" @change="cambiar_estado(data.id)">
-                  <template #off danger>
-                    <fa icon="times"/>
-                  </template>
-                  <template #on success>
-                    <fa icon="check"/>
-                  </template>
-                </vs-switch> -->
               </td>
               <td>
                 <fa icon="edit" class="boton-editar" @click="abrirModalEditar(data)"/>
